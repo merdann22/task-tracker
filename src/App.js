@@ -1,18 +1,13 @@
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import TaskTrackerTitle from "./components/tackTracker_title";
 
 function App() {
-  return (
-    <div className="App dark:bg-gray-900 h-screen p-5">
-        <h3 className="dark:text-white mb-5 text-3xl"> Task tracker</h3>
-        <div>
-
+    // Состояния
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-8">
+            <TaskTrackerTitle/>
         </div>
-        <div className="h-max dark:bg-gray-800 rounded-lg">
-
-        </div>
-
-    </div>
-  );
+    );
 }
 
 export default App;
