@@ -4,7 +4,7 @@ import TaskList from './TaskList';
 import TaskFilter from './TaskFilter';
 import TaskStats from './TaskStats';
 
-function TaskTrackerTitle() {
+function TaskTrackerNotes() {
     // Состояния
     const [tasks, setTasks] = useState([]);
     const [filter, setFilter] = useState('all');
@@ -84,4 +84,4 @@ function TaskTrackerTitle() {
     );
 }
 
-export default TaskTrackerTitle;
+export default TaskTrackerNotes;
