@@ -3,23 +3,16 @@ import Card from "./Card";
 
 export default function Ready ({props, onMoveToReady}) {
 
-    // Фильтруем массив props, оставляя только карточки с типом "Ready"
-    // Результат: массив карточек, которые нужно отобразить в колонке Ready
     const readyItems = props.filter(item => item.type === "Ready");
-
-    // Фильтруем массив props, оставляя только карточки с типом "Backlog"
-    // Результат: массив карточек, которые будут отображаться в выпадающем списке
     const backlogItems = props.filter(item => item.type === 'Backlog');
 
     // showSelect - управляет видимостью выпадающего списка
-    // false (значение по умолчанию) - список скрыт, показываем кнопку "Move card from Backlog"
-    // true - список виден, показываем select и кнопку подтверждения
+    // false (значение по умолчанию) - список скрыт / true - список виден
     // setShowSelect - функция для изменения этого состояния
     const [showSelect, setShowSelect] = React.useState(false);
 
     // selectedItemId - хранит ID карточки, выбранной пользователем в выпадающем списке
     // null (значение по умолчанию) - ничего не выбрано
-    // число (например, 5) - выбран ID карточки, которую нужно переместить
     // setSelectedItemId - функция для изменения этого состояния
     const [selectedItemId, setSelectedItemId] = React.useState(null);
 
@@ -31,7 +24,6 @@ export default function Ready ({props, onMoveToReady}) {
         if (selectedItemId) {
 
             // ПОИСК КАРТОЧКИ: находим объект карточки по её ID
-            // backlogItems - массив всех карточек Backlog (отфильтрован выше)
             // .find() - ищет первый элемент, у которого id совпадает с selectedItemId
             // Если карточка найдена - записываем её в переменную selectedItem
             // Если не найдена - selectedItem будет undefined

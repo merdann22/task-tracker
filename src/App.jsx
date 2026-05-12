@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import TaskTrackerNotes from "./components/tackTracker_notes/index";
-import TaskTrackerWork from "./components/taskTracker_listWork";
+import React from 'react';
+import TaskTrackerWork from "./components/taskTracker_listWork/index.jsx";
 
 function App() {
     // Состояния

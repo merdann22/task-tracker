@@ -101,14 +101,12 @@ function TaskTrackerWork() {
     const moveToReady = (itemId) => {
         setWorked(prevWorked => {
 
-            // ШАГ 1: Находим индекс карточки, которую хотим переместить
-            // И сразу проверяем, что она имеет тип 'Backlog'
+            // ШАГ 1: Находим индекс карточки, которую хотим переместить и сразу проверяем, что она имеет тип 'Backlog'
             const index = prevWorked.findIndex(
                 item => item.id === itemId && item.type === 'Backlog'
             );
 
-            // ШАГ 2: Если карточка не найдена (index = -1),
-            // возвращаем исходный массив без изменений
+            // ШАГ 2: Если карточка не найдена (index = -1), возвращаем исходный массив без изменений
             if (index === -1) return prevWorked;
 
             // ШАГ 3: Создаем НОВУЮ карточку (копию, но с типом 'Ready')
@@ -116,9 +114,7 @@ function TaskTrackerWork() {
             const movedCard = { ...prevWorked[index], type: 'Ready' };
 
             // ШАГ 4: Создаем новый массив:
-            // - берем все элементы ДО перемещаемой карточки (slice(0, index))
-            // - берем все элементы ПОСЛЕ перемещаемой карточки (slice(index + 1))
-            // - добавляем перемещенную карточку в КОНЕЦ
+                // - берем все элементы перемещаемой карточки ДО/ПОСЛЕ и добавляем перемещаемую карточку в КОНЕЦ
             const newWorked = [
                 ...prevWorked.slice(0, index),      // элементы до
                 ...prevWorked.slice(index + 1),     // элементы после
@@ -139,6 +135,15 @@ function TaskTrackerWork() {
         : item));
     }
 
+    const moveToFinished = (itemId) => {
+        setWorked(prevWorked =>
+        prevWorked.map(item => item.id === itemId && item.type === 'Finished'
+        ? { ...item, type: 'Finished' }
+        : item));
+    }
+
+
+
     return <div className="flex items-start justify-around mb-20">
 
         <Backlog className="text-[16px]"
@@ -155,6 +160,7 @@ function TaskTrackerWork() {
         />
         <Finished className="text-[16px]"
                   props={worked}
+                  onMoveToFinished={moveToFinished}
         />
 
     </div>
