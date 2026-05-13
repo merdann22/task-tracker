@@ -3,11 +3,10 @@ import Card from "./Card";
 
 export default function Ready ({props, onMoveToReady}) {
 
-    const readyItems = props.filter(item => item.type === "Ready");
     const backlogItems = props.filter(item => item.type === 'Backlog');
+    const readyItems = props.filter(item => item.type === "Ready");
 
     // showSelect - управляет видимостью выпадающего списка
-    // false (значение по умолчанию) - список скрыт / true - список виден
     // setShowSelect - функция для изменения этого состояния
     const [showSelect, setShowSelect] = React.useState(false);
 
@@ -18,7 +17,7 @@ export default function Ready ({props, onMoveToReady}) {
 
 
     // ОБРАБОТЧИК ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
-    const handleBacklogAdd = () => {
+    const handleReadyAdd = () => {
 
         // ПРОВЕРКА 1: Есть ли выбранная карточка?
         if (selectedItemId) {
@@ -60,7 +59,7 @@ export default function Ready ({props, onMoveToReady}) {
     }
 
         return (
-        <div className="bg-gray-200 p-1 max-w-[260px] max-h-[500px] rounded-[10px] flex flex-col">
+        <div className="bg-gray-200 p-1 w-[260px] max-h-[500px] rounded-[10px] flex flex-col">
             <h1 className="text-center p-1 m-1 w-auto text-xl">Ready</h1>
             <div className="flex flex-col overflow-auto rounded-2xl w-full">
                 {readyItems.map (item => (
@@ -91,9 +90,10 @@ export default function Ready ({props, onMoveToReady}) {
                 )}
                 {showSelect && (
                     <button
-                        className="bg-green-700 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-green-600"
-                        onClick={handleBacklogAdd}
-                        disabled={!selectedItemId}
+                        className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
+                        onClick={()=> {
+                            handleReadyAdd();
+                        setShowSelect(false);}}
                     >
                         Подтвердить
                     </button>

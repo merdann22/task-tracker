@@ -75,22 +75,14 @@ export default function Backlog ({props,  onAddCard}) {
                         />
                         <div className="flex justify-between w-full">
                             <button
-                                className="bg-green-700 h-auto p-2 m-2 w-full rounded-[5px] text-white hover:bg-green-600"
+                                className="bg-blue-600 h-auto p-2 m-2 w-full rounded-[5px] text-white hover:bg-blue-500"
                                 type="submit"
-                                onClick={()=>{handleAddCard(); setShowInput(false); setHiddenButton(true)}}
+                                onClick={()=>{
+                                    handleAddCard();
+                                    setShowInput(false);
+                                    setHiddenButton(true)}}
                             >
                                 Подтвердить
-                            </button>
-                            <button
-                                className="bg-red-600 h-auto p-2 m-2 w-full rounded-[5px] text-white hover:bg-red-500"
-                                type="submit"
-                                onClick={() => {
-                                    setShowInput(false);
-                                    setInputValue("");
-                                    setHiddenButton(true)
-                                }}
-                            >
-                                Отменить
                             </button>
                         </div>
 

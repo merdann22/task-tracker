@@ -129,17 +129,42 @@ function TaskTrackerWork() {
     // ФУНКЦИЯ 3: ПЕРЕМЕЩЕНИЕ ИЗ READY В IN PROGRESS
     const moveToProgress = (itemId) => {
 
-        setWorked(prevWorked =>
-        prevWorked.map(item => item.id === itemId && item.type === 'Ready'
-        ? { ...item, type: 'In Progress' }
-        : item));
+        setWorked(prevWorked =>  {
+            const index = prevWorked.findIndex(
+                item => item.id === itemId && item.type === 'Ready'
+            );
+
+            if (index === -1) return prevWorked;
+
+            const movedCard = { ...prevWorked[index], type: 'In Progress' };
+
+            const newWorked = [
+                ...prevWorked.slice(0,index),
+                ...prevWorked.slice(index + 1),
+                movedCard
+                ];
+
+            return newWorked;
+        });
     }
 
     const moveToFinished = (itemId) => {
-        setWorked(prevWorked =>
-        prevWorked.map(item => item.id === itemId && item.type === 'Finished'
-        ? { ...item, type: 'Finished' }
-        : item));
+        setWorked(prevWorked => {
+            const index = prevWorked.findIndex(
+                item => item.id === itemId && item.type === 'In Progress');
+
+            if (index === -1) return prevWorked;
+
+            const movedCard = { ...prevWorked[index], type: 'Finished' };
+
+            const newWorked = [
+                ...prevWorked.slice(0, index),
+                ...prevWorked.slice(index + 1),
+                movedCard
+            ]
+
+            return newWorked;
+        });
     }
 
 
@@ -162,7 +187,6 @@ function TaskTrackerWork() {
                   props={worked}
                   onMoveToFinished={moveToFinished}
         />
-
     </div>
 }
 export default TaskTrackerWork;
