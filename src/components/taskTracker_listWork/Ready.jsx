@@ -93,7 +93,8 @@ export default function Ready ({props, onMoveToReady}) {
                         className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
                         onClick={()=> {
                             handleReadyAdd();
-                        setShowSelect(false);}}
+                            setShowSelect(false);
+                        }}
                     >
                         Подтвердить
                     </button>

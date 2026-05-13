@@ -1,16 +1,35 @@
 import Card from "./Card";
 import React, {useState} from "react";
 
-export default function Finished ({props}) {
+export default function Finished ({props, onMoveToFinished}) {
 
     const finishedItems = props.filter(item => item.type === 'Finished');
     const inProgressItems = props.filter(item => item.type === 'In Progress');
 
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [showSelect, setShowSelect] = useState(false);
+    const [selectedItemId, setSelectedItemId] = useState(null);
 
-    const handleChange = (e) => {
-        setSelectedItem(e.target.value);
+    const handleFinishedAdd = () => {
+        if (selectedItemId) {
+
+            const selectedItem = inProgressItems.find(item => item.id === selectedItemId);
+
+            if (selectedItem.type === 'In Progress') {
+
+                onMoveToFinished(selectedItem.id);
+
+                console.log('Переместили в Finished', selectedItem.text);
+
+                setSelectedItemId(null);
+                setShowSelect(false);
+            }
+        }
     }
+
+    const showSelectHandler = () => {
+        setShowSelect(true);
+    }
+
 
     return (
         <div className="bg-gray-200 p-1 w-[260px] max-h-[500px] rounded-[10px] flex flex-col">
@@ -23,23 +42,37 @@ export default function Finished ({props}) {
                     />
                 ))}
 
-                <select  className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto" name="" id=""
-                onChange={handleChange}>
-                    <option value="" disabled hidden></option>
+                {showSelect && (
+                    <select  className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto" name="" id=""
+                             onChange={(e) => setSelectedItemId(Number(e.target.value))}
+                             value={selectedItemId || ""}>
+                        <option value="" hidden></option>
 
-                    {inProgressItems.map(item => (
-                        <option value="" className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto">
-                            {item.text}
-                        </option>
-                    ))}
+                        {inProgressItems.map(inProgressItem => (
+                            <option key={inProgressItem.id}  value={inProgressItem.id} className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto">
+                                {inProgressItem.text}
+                            </option>
+                        ))}
+                    </select>
+                )}
+                {!showSelect && finishedItems.length > 0 && (
+                    <button className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
+                            onClick={showSelectHandler}
+                    >
+                        Добавить из Progress
+                    </button>
+                )}
+                {showSelect && (
+                    <button className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
+                            onClick={() => {
+                            handleFinishedAdd();
+                            setShowSelect(false);
+                            }}
+                    >
+                       Подтвердить
+                    </button>
+                )}
 
-                </select>
-
-                <button className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
-
-                >
-                    Add card
-                </button>
 
 
             </div>

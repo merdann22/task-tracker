@@ -65,9 +65,9 @@ export default function Backlog ({props,  onAddCard}) {
                     />
                 ))}
                 {showInput && (
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center w-full px-2">
                         <input
-                            className="bg-white h-auto p-2 m-2 w-[235px] rounded-[5px] text-gray-700  hover:text-black"
+                            className="bg-white p-2 m-2 w-full box-border rounded-[5px] text-gray-700  hover:text-black"
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
                             onKeyPress={(e) => e.key === 'Enter' && handleAddCard()}
@@ -75,7 +75,7 @@ export default function Backlog ({props,  onAddCard}) {
                         />
                         <div className="flex justify-between w-full">
                             <button
-                                className="bg-blue-600 h-auto p-2 m-2 w-full rounded-[5px] text-white hover:bg-blue-500"
+                                className="bg-blue-600 h-auto p-2 mt-2 mb-2 w-full rounded-[5px] text-white hover:bg-blue-500"
                                 type="submit"
                                 onClick={()=>{
                                     handleAddCard();
@@ -88,6 +88,7 @@ export default function Backlog ({props,  onAddCard}) {
 
                     </div>
                 )}
+
                 { hiddenButton && (
                     <button className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
                             onClick={() => setShowInput(true) & setHiddenButton(false)}

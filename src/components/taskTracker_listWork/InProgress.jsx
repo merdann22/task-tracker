@@ -48,9 +48,11 @@ export default function InProgress ({props, onMoveToProgress}) {
                             onChange={(e) => setSelectedItemId(Number(e.target.value))}
                             value={selectedItemId || ""}>
                         <option value="" hidden></option>
+
                         {readyItems.map(readyItem =>(
-                            <option key={readyItem.id} value={readyItem.id} className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto"
-                            >{readyItem.text}</option>
+                            <option key={readyItem.id} value={readyItem.id} className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto">
+                                {readyItem.text}
+                            </option>
                         ))}
                     </select>
                 )}
@@ -63,8 +65,10 @@ export default function InProgress ({props, onMoveToProgress}) {
                 )}
                 {showSelect && (
                     <button className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
-                            onClick={handleInProgressAdd}
-                            disabled={!showSelect}
+                            onClick={() => {
+                            handleInProgressAdd();
+                            setShowSelect(false);
+                            }}
                     >
                         Подтвердить
                     </button>
