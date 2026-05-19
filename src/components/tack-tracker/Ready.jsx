@@ -69,13 +69,13 @@ export default function Ready ({props, onMoveToReady}) {
                     />
                 ))}
                 { showSelect && (
-                    <select className="flex flex-col rounded-[5px] w-auto p-2 m-2" name="asd" id="1"
+                    <select className="flex flex-col rounded-[5px] hover:bg-g w-auto p-2 m-2" name="asd" id="1"
                             onChange={(e) => setSelectedItemId(Number(e.target.value))}
                             value={selectedItemId || ""}>
                         <option value="" hidden></option>
-                            {backlogItems.map(backlogItem => (
-                                <option key={backlogItem.id} value={backlogItem.id}>
-                                    {backlogItem.text}
+                            {backlogItems.map(backlogItems => (
+                                <option key={backlogItems.id} value={backlogItems.id}>
+                                    {backlogItems.text}
                                 </option>
                             ))}
                     </select>

@@ -168,8 +168,7 @@ function TaskTrackerWork() {
     }
 
 
-
-    return <div className="flex items-start justify-around mb-20">
+    return <div className="grid grid-cols-1 gap-10 items-start justify-items-center lg:grid-cols-4">
 
         <Backlog className="text-[16px]"
                  props={worked}

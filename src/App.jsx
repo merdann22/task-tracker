@@ -1,11 +1,13 @@
 import React from 'react';
-import TaskTrackerWork from "./components";
+import TaskTrackerWork from "./components/tack-tracker";
+import Layout from "./components/Layout.jsx";
 
 function App() {
     // Состояния
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-8">
+        <Layout>
             <TaskTrackerWork/>
-        </div>
-    );}
+        </Layout>
+    );
+}
 export default App;
