@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import Select from "./Select";
 
 export default function Ready ({props, onMoveToReady}) {
 
@@ -69,16 +70,11 @@ export default function Ready ({props, onMoveToReady}) {
                     />
                 ))}
                 { showSelect && (
-                    <select className="flex flex-col rounded-[5px] hover:bg-g w-auto p-2 m-2" name="asd" id="1"
-                            onChange={(e) => setSelectedItemId(Number(e.target.value))}
-                            value={selectedItemId || ""}>
-                        <option value="" hidden></option>
-                            {backlogItems.map(backlogItems => (
-                                <option key={backlogItems.id} value={backlogItems.id}>
-                                    {backlogItems.text}
-                                </option>
-                            ))}
-                    </select>
+                    <Select
+                        value={selectedItemId}
+                        items={backlogItems}
+                        onChange={setSelectedItemId}
+                    />
                 )}
                 {!showSelect && backlogItems.length > 0 && (
                     <button

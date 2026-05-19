@@ -1,5 +1,6 @@
 import Card from "./Card";
 import React, {useState} from "react";
+import Select from "./Select";
 
 export default function Finished ({props, onMoveToFinished}) {
 
@@ -43,17 +44,11 @@ export default function Finished ({props, onMoveToFinished}) {
                 ))}
 
                 {showSelect && (
-                    <select  className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto" name="" id=""
-                             onChange={(e) => setSelectedItemId(Number(e.target.value))}
-                             value={selectedItemId || ""}>
-                        <option value="" hidden></option>
-
-                        {inProgressItems.map(inProgressItem => (
-                            <option key={inProgressItem.id}  value={inProgressItem.id} className="flex flex-col overflow-auto rounded-[5px] m-2 p-2 w-auto">
-                                {inProgressItem.text}
-                            </option>
-                        ))}
-                    </select>
+                    <Select
+                        value={selectedItemId}
+                        items={inProgressItems}
+                        onChange={setSelectedItemId}
+                    />
                 )}
                 {!showSelect && finishedItems.length > 0 && (
                     <button className="bg-blue-600 h-auto p-2 m-2 w-auto rounded-[5px] text-white hover:bg-blue-500"
