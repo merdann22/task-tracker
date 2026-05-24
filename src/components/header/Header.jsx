@@ -1,9 +1,9 @@
 
 export default function Header() {
     return (
-        <div>
-            <h1>Awesome Kanban Board</h1>
-            <div>
+        <div className="bg-[#0067A3] flex justify-between m-auto w-full items-center p-5">
+            <h1 className="text-2xl text-white">Awesome Kanban Board</h1>
+            <div className="">
                 <div className="absolute">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_2_4)">

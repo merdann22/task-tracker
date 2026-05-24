@@ -4,72 +4,7 @@ import React from "react";
 import Ready from "./Ready";
 import Finished from "./Finished";
 
-
-let initialWorked = [
-    {
-        id: 1,
-        text: 'Login page – performance issues',
-        type: 'Backlog',
-    },
-    {
-        id: 2,
-        text: 'Sprint bugfix',
-        type: 'Backlog',
-    },
-    {
-        id: 3,
-        text: 'Shop page – performance issues',
-        type: 'Ready',
-    },
-    {
-        id: 4,
-        text: 'Checkout bugfix',
-        type: 'Ready',
-    },
-    {
-        id: 5,
-        text: 'Shop bug1',
-        type: 'Ready',
-    },
-    {
-        id: 6,
-        text: 'Shop bug2',
-        type: 'Ready',
-    },
-    {
-        id: 7,
-        text: 'Shop page – performance issues',
-        type: 'Ready',
-    },
-    {
-        id: 8,
-        text: 'User page – performance issues',
-        type: 'In Progress',
-    },
-    {
-        id: 9,
-        text: 'Auth bugfix',
-        type: 'In Progress',
-    },
-    {
-        id: 10,
-        text: 'Main page – performance issues',
-        type: 'Finished',
-    },
-    {
-        id: 11,
-        text: 'Main page bugfix',
-        type: 'Finished',
-    },
-]
-
-function TaskTrackerWork() {
-
-    // СОСТОЯНИЕ: массив всех карточек
-    // worked - хранит все карточки с их свойствами (id, text, type)
-    // setWorked - функция для обновления этого массива
-    // initialWorked - начальные данные (массив карточек)
-    const [worked, setWorked] = React.useState(initialWorked);
+function TaskTrackerWork({ worked, setWorked }) {
 
     // ВЫЧИСЛЯЕМОЕ ЗНАЧЕНИЕ: следующий ID для новой карточки
     // worked.length - текущее количество карточек в массиве
@@ -168,7 +103,7 @@ function TaskTrackerWork() {
     }
 
 
-    return <div className="grid grid-cols-1 gap-10 items-start justify-items-center lg:grid-cols-4">
+    return <div className="grid grid-cols-1 gap-10 items-start justify-items-center lg:grid-cols-4 p-5">
 
         <Backlog className="text-[16px]"
                  props={worked}
