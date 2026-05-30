@@ -34,12 +34,13 @@ export default function Finished ({props, onMoveToFinished}) {
 
     return (
         <div className="bg-gray-200 p-1 w-[260px] max-h-[500px] rounded-[10px] flex flex-col">
-            <h1 className="text-center p-1 m-1 w-auto text-xl">Finished</h1>
+            <h1 className="text-center p-1 m-1 w-auto text-[18px]">Finished</h1>
             <div className="flex flex-col overflow-auto rounded-2xl w-full">
                 {finishedItems.map(item => (
                     <Card
                         key={item.id}
-                        Item={item.text}
+                        id={item.id}
+                        text={item.text}
                     />
                 ))}
 

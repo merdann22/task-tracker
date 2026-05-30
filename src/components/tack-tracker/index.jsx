@@ -103,7 +103,7 @@ function TaskTrackerWork({ worked, setWorked }) {
     }
 
 
-    return <div className="grid grid-cols-1 gap-10 items-start justify-items-center lg:grid-cols-4 p-5">
+    return <div className="grid w-full gap-10 justify-items-center lg:justify-between lg:items-baseline lg:grid-cols-[min-content_min-content_min-content_min-content] p-5">
 
         <Backlog className="text-[16px]"
                  props={worked}

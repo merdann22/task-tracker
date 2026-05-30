@@ -56,12 +56,13 @@ export default function Backlog ({props,  onAddCard}) {
 
         <div className="bg-gray-200 p-1 w-[260px] max-h-[500px] rounded-[10px] flex flex-col">
 
-            <h1 className="text-center p-1 m-1 w-auto text-xl">Backlog</h1>
+            <h1 className="text-center p-1 m-1 w-auto text-[18px]">Backlog</h1>
             <div className="flex flex-col overflow-auto rounded-2xl w-full">
                 {backlogItems.map(item => (
                     <Card
                         key={item.id}
-                        Item={item.text}
+                        id={item.id}
+                        text={item.text}
                     />
                 ))}
                 {showInput && (
