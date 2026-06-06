@@ -93,7 +93,7 @@ function App() {
                                element={<TaskTrackerWork worked={worked} setWorked={setWorked}/>}
                         />
                         <Route path="task/:id"
-                                   element={<Task worked={worked} setWorked={setWorked}/>}
+                               element={<Task worked={worked} setWorked={setWorked}/>}
                             />
                     </Routes>
             </Layout>
