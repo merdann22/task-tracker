@@ -91,7 +91,7 @@ src/
 ### Clone repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/task-tracker.git
+git clone https://github.com/merdann22/task-tracker.git
 ```
 
 ### Go to project directory
@@ -115,7 +115,7 @@ npm start
 Application will be available at:
 
 ```text
-http://localhost:3000
+http://localhost:3001 or http://localhost:3000
 ```
 
 ---
